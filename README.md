@@ -13,6 +13,8 @@ This repository contains the code and documentation for my MSc project thesis, t
 - `Cleaning_Version1.ipynb`: Second stage of cleaning the scraped data.
 - `Copy_of_finalcodes.ipynb`: Final notebook containing the rest of the minor cleaning, Exploratory Analysis, Style of play  and machine learning model development.
 - `README.md`: This README file.
+- `requirements.txt`: File listing required Python libraries.
+- `install_packages.R`: Script for installing required R libraries.
 
 ## Process Overview
 
