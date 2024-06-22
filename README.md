@@ -84,13 +84,13 @@ To reproduce the results of this project, follow these steps:
 
 ```sh
 pip install -r requirements.txt
-
+```
 
 #### For R libraries, run:
 
 ```sh
 source("install_packages.R")
-
+```
 
 #### Run the web scraping scripts:
 Ensure you have R installed on your machine, and run the following scripts in order:
@@ -99,3 +99,5 @@ Ensure you have R installed on your machine, and run the following scripts in or
 Rscript myscraping.R
 Rscript secondscrape.R
 Rscript pmatchlogs.R
+```
+
