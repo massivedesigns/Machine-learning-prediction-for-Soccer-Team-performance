@@ -7,8 +7,8 @@ This repository contains the code and documentation for my MSc project thesis, t
 ## Repository Structure
 
 - `myscraping.R`: Initial script for web-scraping data from Football Reference.
-- `pmatchlogs.R`: Script for scraping player's raw attributes for each match.
 - `secondscrape.R`: Additional script for web-scraping data from Football Reference.
+- `pmatchlogs.R`: Script for scraping player's raw attributes for each match.
 - `Cleaning logs1.ipynb`: First stage of cleaning the scraped data.
 - `Cleaning_Version1.ipynb`: Second stage of cleaning the scraped data.
 - `Copy_of_finalcodes.ipynb`: Final notebook containing the rest of the minor cleaning, Exploratory Analysis, Style of play  and machine learning model development.
