@@ -16,6 +16,35 @@ This repository contains the code and documentation for my MSc project thesis, t
 - `requirements.txt`: File listing required Python libraries.
 - `install_packages.R`: Script for installing required R libraries.
 
+## Libraries Used
+
+### Python Libraries
+
+- `numpy`
+- `pandas`
+- `scikit-learn`
+- `matplotlib`
+- `seaborn`
+- `plotly`
+- `mplsoccer`
+- `math`
+- `scipy`
+- `datetime`
+- `joblib`
+- `xgboost`
+- `imbalanced-learn`
+- `catboost`
+- `tensorflow`
+- `pickle-mixin`  
+
+### R Libraries
+
+- `worldfootballR`
+  - To install: `devtools::install_github("JaseZiv/worldfootballR")`
+- `dplyr`
+- `purrr`
+- `readr`
+
 ## Process Overview
 
 ### 1. Web Scraping
@@ -48,3 +77,22 @@ To reproduce the results of this project, follow these steps:
    ```sh
    git clone https://github.com/yourusername/your-repo-name.git
    cd your-repo-name
+   
+2. **Install the required libraries:**
+
+For Python libraries, run:
+
+```sh
+pip install -r requirements.txt
+
+For R libraries, run:
+source("install_packages.R")
+
+Run the web scraping scripts:
+
+Ensure you have R installed on your machine, and run the following scripts in order:
+
+```sh
+Rscript myscraping.R
+Rscript secondscrape.R
+Rscript pmatchlogs.R
