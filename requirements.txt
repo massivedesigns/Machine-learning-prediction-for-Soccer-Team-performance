@@ -4,6 +4,10 @@ scikit-learn
 matplotlib
 seaborn
 plotly
+mplsoccer
+math
+scipy
+datetime
 joblib
 xgboost
 imbalanced-learn
