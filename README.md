@@ -80,19 +80,19 @@ To reproduce the results of this project, follow these steps:
    
 2. **Install the required libraries:**
 
-For Python libraries, run:
+#### For Python libraries, run:
 
 ```sh
 pip install -r requirements.txt
 
 
-For R libraries, run:
+#### For R libraries, run:
 
 ```sh
 source("install_packages.R")
 
 
-Run the web scraping scripts:
+#### Run the web scraping scripts:
 Ensure you have R installed on your machine, and run the following scripts in order:
 
 ```sh
