@@ -75,8 +75,8 @@ To reproduce the results of this project, follow these steps:
 1. **Clone the repository:**
 
    ```sh
-   git clone https://github.com/yourusername/your-repo-name.git
-   cd your-repo-name
+   git clone https://github.com/massivedesigns/Machine-learning-prediction-for-Soccer-Team-performance.git
+   cd Machine-learning-prediction-for-Soccer-Team-performance
    
 2. **Install the required libraries:**
 
