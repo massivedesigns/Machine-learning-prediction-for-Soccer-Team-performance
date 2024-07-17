@@ -8,7 +8,8 @@ import matplotlib.pyplot as plt
 
 # Load your data (merged2 DataFrame), model, and encoders here
 # merged2_path = "/Users/mac/football Project python/version1/merged2.csv"
-merged2_path = "Machine-learning-prediction-for-Soccer-Team-performance/merged2.csv"
+# merged2_path = "Machine-learning-prediction-for-Soccer-Team-performance/merged2.csv"
+merged2_path = "merged2.csv"
 merged2 = pd.read_csv(merged2_path)
 
 # Load your trained keras LSTM model
