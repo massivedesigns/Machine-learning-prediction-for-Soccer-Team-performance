@@ -1,7 +1,9 @@
-numpy
-pandas
-scikit-learn
-matplotlib
+streamlit==1.34.0
+tensorflow==2.16.1
+numpy==1.26.4
+pandas==2.2.2
+scikit-learn==1.4.2
+matplotlib==3.9.1
 seaborn
 plotly
 mplsoccer
@@ -11,5 +13,5 @@ joblib
 xgboost
 imbalanced-learn
 catboost
-tensorflow
 pickle-mixin  # 'pickle' is part of the Python standard library, so we use 'pickle-mixin' as a placeholder
+
