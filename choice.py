@@ -14,24 +14,24 @@ merged2 = pd.read_csv(merged2_path)
 
 # Load your trained keras LSTM model
 # model_path = "/Users/mac/Downloads/match_outcome_model14.h5"
-model_path = "Machine-learning-prediction-for-Soccer-Team-performance/match_outcome_model14.h5"
+model_path = "match_outcome_model14.h5"
 modelmatch = load_model(model_path)
 
 # Load your ball possession model
 # possession_model_path = "/Users/mac/Downloads/possession_model (2).h5"
-possession_model_path = "Machine-learning-prediction-for-Soccer-Team-performance/possession_model (2).h5"
+possession_model_path = "possession_model (2).h5"
 modelpossession = load_model(possession_model_path)
 
 # Load encoders (if needed)
 # squad_encoder = joblib.load("/Users/mac/football Project python/version1/Squad_encoder1.pkl")
 # player_encoder = joblib.load("/Users/mac/football Project python/version1/Player_encoder1.pkl")
 
-squad_encoder = joblib.load("Machine-learning-prediction-for-Soccer-Team-performance/Squad_encoder1.pkl")
-player_encoder = joblib.load("Machine-learning-prediction-for-Soccer-Team-performance/Player_encoder1.pkl")
+squad_encoder = joblib.load("Squad_encoder1.pkl")
+player_encoder = joblib.load("Player_encoder1.pkl")
 
 # Load scaler from file
 # scaler_path = "/Users/mac/football Project python/version1/scaler.pkl"
-scaler_path = "Machine-learning-prediction-for-Soccer-Team-performance/scaler.pkl"
+scaler_path = "scaler.pkl"
 scaler = joblib.load(scaler_path)
 
 # Mapping for outcome classes
