@@ -206,6 +206,16 @@ def main():
                        page_title="Football Team Performance App",
                        page_icon="https://cdn-icons-png.flaticon.com/128/1099/1099672.png",
                         )  
+    
+    # Hide Streamlit menu and footer
+    hide_default_format = """
+           <style>
+           #MainMenu {visibility: hidden; }
+           footer {visibility: hidden;}
+           </style>
+           """
+    st.markdown(hide_default_format, unsafe_allow_html=True)
+    
     # Embed CSS for background image and styling
     st.markdown(
         """
