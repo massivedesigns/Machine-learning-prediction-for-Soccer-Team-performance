@@ -207,20 +207,15 @@ def main():
                        page_icon="https://cdn-icons-png.flaticon.com/128/1099/1099672.png",
                         )  
     
-    # Hide Streamlit menu and footer
-    hide_default_format = """
-           <style>
-           #MainMenu {visibility: hidden;}
-           footer {visibility: hidden;}
-           header {visibility: hidden;}
-           </style>
-           """
-    st.markdown(hide_default_format, unsafe_allow_html=True)
     
     # Embed CSS for background image and styling
     st.markdown(
         """
         <style>
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
+        header {visibility: hidden;}
+        
         .stApp {
             #background-image: url("https://theanalyst.com/wp-content/uploads/2023/07/premier-league-star-players.jpg");
             #background-image: url("https://static.vecteezy.com/system/resources/previews/040/478/797/non_2x/soccer-template-design-football-banner-sport-layout-design-red-theme-abstract-background-vector.jpg");
@@ -236,6 +231,7 @@ def main():
             display: flex;
             flex-direction: column;
             align-items: center;  /* Center align content vertically */
+            zoom: 0.8;  /* Zoom out */
         }
         .streamlit-container {
             padding-top: 0 !important;
@@ -290,12 +286,11 @@ def main():
             text-align: center;
             font-size: 1.5rem; /* Adjust the font size as needed */
         }
-        footer {visibility: hidden;}
-        .css-18e3th9 {padding-top: 0rem;}
-        .css-1d391kg {padding-top: 0rem;}
+      
         </style>
         """, unsafe_allow_html=True
     )
+    
     # Your Streamlit app content here
     st.markdown("<h1 class='centered-title'>Football Match Team Performance Predictor</h1>", unsafe_allow_html=True)
     # st.title("Football Match Team Performance Predictor")
