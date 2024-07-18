@@ -64,6 +64,7 @@ def get_unique_players_by_squad(df):
     squad_player_map = {squad: df[df['Squad'] == squad]['Player'].unique() for squad in squads}
     return squad_player_map
 
+
 # Function to extract player features for a given team and match
 def extract_latest_player_features(df, squad_name, selected_player_names, features):
     # Encode the squad name
@@ -200,125 +201,114 @@ def plot_radar_chart(team1_name, team1_percentiles, team2_name, team2_percentile
 
 # Streamlit app code
 def main():
-      # Embed CSS for background image and styling
+    
+    st.set_page_config(layout="wide", 
+                       page_title="Football Team Performance App",
+                       page_icon="https://cdn-icons-png.flaticon.com/128/1099/1099672.png",
+                        )  
+    # Embed CSS for background image and styling
     st.markdown(
         """
         <style>
         .stApp {
-            max-width: 100%; /* Ensure Streamlit app takes full width */
-            background-image: url("https://theanalyst.com/wp-content/uploads/2023/07/premier-league-star-players.jpg");
-            # background-size: cover;
-            # background-position: center;
-            color: white;
-            # text-shadow: 2px 2px 4px #000000;
-        }
-        
-        body {
-            background-image: url("https://theanalyst.com/wp-content/uploads/2023/07/premier-league-star-players.jpg");
+            #background-image: url("https://theanalyst.com/wp-content/uploads/2023/07/premier-league-star-players.jpg");
+            #background-image: url("https://static.vecteezy.com/system/resources/previews/040/478/797/non_2x/soccer-template-design-football-banner-sport-layout-design-red-theme-abstract-background-vector.jpg");
+            #background-image: url("https://static.vecteezy.com/system/resources/previews/036/133/901/non_2x/football-soccer-background-design-soccer-ball-illustration-geometric-lines-and-stripes-style-vector.jpg");
+            #background-image: url("https://static.vecteezy.com/system/resources/previews/014/720/363/non_2x/soccer-ball-of-white-and-red-color-bouncing-on-a-soccer-field-on-a-background-with-the-flag-of-qatar-image-vector.jpg");
+            #background-image: url("https://static.vecteezy.com/system/resources/previews/008/676/796/large_2x/abstract-world-football-2022-tournament-background-illustration-football-pattern-for-banner-card-website-burgundy-color-national-flag-vector.jpg");
+            #background-image: url("https://static.vecteezy.com/system/resources/thumbnails/024/093/567/small_2x/football-theme-colorful-background-vector.jpg");
+            background-image: url("https://media.istockphoto.com/id/504572944/photo/ball.jpg?s=612x612&w=0&k=20&c=lLUDoXf-DcRYFZcKHzRMs9jszipOiBRAHx0nCu1zG70=");
             background-size: cover;
-            background-position: center;
-            color: white;
-            margin: 0;
-            padding: 0;
-            height: 100vh; /* Set height to 100% of viewport height */
+            # background-position: center;
+            padding-top: 0 !important;
+            margin-top: 0 !important;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: Arial, sans-serif; /* Optional: Change font */
+            flex-direction: column;
+            align-items: center;  /* Center align content vertically */
         }
-
-        .container {
-            display: flex;
-            justify-content: space-between;
-            width: 95%; /* Adjust width of containers */
-            max-width: 1200px; /* Limit max width */
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-
-        .container .right {
-            width: 30%; /* Adjust width of left container */
-        }
-
-        .container .left {
-            width: 65%; /* Adjust width of right container */
-            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Optional: Add box shadow */
-        }
-
-
-        .stApp h1 {
-            color: white;
-            text-shadow: 2px 2px 4px #000000;
+        .streamlit-container {
+            padding-top: 0 !important;
+            margin-top: 0 !important;
         }
         
-        .stApp .stButton>button {
-            background-color: #4CAF50; /* Green */
-            border: none;
-            color: white;
-            padding: 10px 22px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 14px;
-            margin: 4px 2px;
-            transition-duration: 0.4s;
-            cursor: pointer;
-        }
-
+        # .stApp h1 {
+        #     color: white;
+        #     text-shadow: 2px 2px 4px #000000;
+        # }
+        # .stApp .stButton>button {
+        #     background-color: #4CAF50; /* Green */
+        #     border: none;
+        #     color: white;
+        #     # padding: 15px 32px;
+        #     text-align: center;
+        #     text-decoration: none;
+        #     display: inline-block;
+        #     font-size: 10px;
+        #     # margin: 2px 0px;
+        #     transition-duration: 0.4s;
+        #     cursor: pointer;
+        # }
         .stApp .stButton>button:hover {
             background-color: white;
             color: black;
             border: 2px solid #4CAF50;
         }
-                
-        .stApp .stSelectbox label {
-            color: white !important; /* Change label text color to white */
-            font-weight: bold;
-            font-size: 70px;
+        .centered-title {
+            text-align: center;
+            padding: 1rem;
         }
-        # .stApp .stContainer {
-        #     max-width: 90%; /* Adjust container width for full-width layout */
-        #     padding-top: 20px; /* Add padding to the top */
-        #     padding-bottom: 20px; /* Add padding to the bottom */
-        # }
-        # body {
-        #     max-width: 100%;
-        # }
-
+        .css-18e3th9 {
+            padding-top: 0rem;
+            padding-bottom: 10rem;
+            padding-left: 5rem;
+            padding-right: 5rem;
+        }
+         .css-1d391kg {
+            padding-top: 3.5rem;
+            padding-right: 1rem;
+            padding-bottom: 3.5rem;
+            padding-left: 1rem;
+        }
+        .block-container {
+            padding-top: 1rem;
+            padding-bottom: 0rem;
+            padding-left: 5rem;
+            padding-right: 5rem;
+        }
+        .centered-header {
+            text-align: center;
+            font-size: 1.5rem; /* Adjust the font size as needed */
+        }
         </style>
         """, unsafe_allow_html=True
     )
-    # # Main Streamlit application
-    # st.set_page_config(layout="wide")  # Set layout to wide
+    # Your Streamlit app content here
+    st.markdown("<h1 class='centered-title'>Football Match Team Performance Predictor</h1>", unsafe_allow_html=True)
+    # st.title("Football Match Team Performance Predictor")
 
-    st.title("Football Match Outcome Predictor")
-    st.markdown(
-        """
-        Welcome to the football match analysis tool. You can use this tool to predict match outcomes and analyze team styles 
-        based on player statistics.
-        """
-    )
-    # Get unique players grouped by squad
-    squad_player_map = get_unique_players_by_squad(merged2)
+    
+    # Split the layout into two columns
+    col1, col2 = st.columns(2)
 
-   
-   # Left container (65% width)
-    with st.container() as left_container:
+    with col1:
+        # st.header("Simulate your match line up here")
+        st.markdown("<h2 class='centered-header'>Simulate your match line up here</h2>", unsafe_allow_html=True)
+
+        # Get unique players grouped by squad
+        squad_player_map = get_unique_players_by_squad(merged2)
+        
         # Select two teams for prediction
         team1_name = st.selectbox("Select Home Team", merged2['Squad'].unique(), index=0)  # Index 0 represents the default selection
         team2_name = st.selectbox("Select Away Team", merged2['Squad'].unique(), index=1)  # Index 1 represents the default selection
-        
+
         # Select players for home team
         st.subheader(f"Select 15 players for {team1_name}:")
         selected_team1_players = st.multiselect("Select Players", squad_player_map[team1_name], default=squad_player_map[team1_name][:15])
-    
 
         # Select players for away team
         st.subheader(f"Select 15 players for {team2_name}:")
         selected_team2_players = st.multiselect("Select Players", squad_player_map[team2_name], default=squad_player_map[team2_name][:15])
+
 
         # Ensure exactly 15 players are selected for each team
         if len(selected_team1_players) != 15 or len(selected_team2_players) != 15:
@@ -334,7 +324,7 @@ def main():
             }
         
         # Button for showing style of play
-        if st.button("Display Style of Play"):
+        if st.button("Show Style of Play"):
             st.session_state.state['show_style_of_play'] = True
 
         # Button for showing match outcome
@@ -344,46 +334,95 @@ def main():
         # Button for showing ball possession
         if st.button("Predict Ball Possession"):
             st.session_state.state['show_ball_possession'] = True
-    
-    # Right container (35% width)
-    with st.container() as right_container:   
-        # Show style of play radar chart if button is clicked
-        if st.session_state.state['show_style_of_play']:
-            team1_mean_scores = calculate_mean_scores(merged2, team1_name, selected_team1_players, ['possession_score_rolling_avg', 'defensive_score_rolling_avg', 'attacking_score_rolling_avg'])
-            team2_mean_scores = calculate_mean_scores(merged2, team2_name, selected_team2_players, ['possession_score_rolling_avg', 'defensive_score_rolling_avg', 'attacking_score_rolling_avg'])
-            
-            all_teams = merged2['Squad'].unique()
-            all_teams_mean_scores = {team: calculate_mean_scores(merged2, team, squad_player_map[team][:15], ['possession_score_rolling_avg', 'defensive_score_rolling_avg', 'attacking_score_rolling_avg']) for team in all_teams if team != team1_name and team != team2_name}
-            
-            team1_percentiles = calculate_percentile_ranks(all_teams_mean_scores, team1_name, team1_mean_scores)
-            team2_percentiles = calculate_percentile_ranks(all_teams_mean_scores, team2_name, team2_mean_scores)
-            
-            plot_radar_chart(team1_name, team1_percentiles, team2_name, team2_percentiles)
 
-        # Predict match outcome if button is clicked
-        if st.session_state.state['show_match_outcome']:
-            match_features_scaled = prepare_match_features(
-                merged2, team1_name, team2_name, selected_team1_players, selected_team2_players, rolling_features, scaler
-            )
-            prediction = modelmatch.predict(match_features_scaled)
-            predicted_class = np.argmax(prediction, axis=-1)
-            predicted_outcome = outcome_mapping[predicted_class[0]]
-            st.subheader("Predicted Match Outcome:")
-            st.write(predicted_outcome)
+    with col2:
+        # st.header("Performances are Display here ")
+        st.markdown("<h2 class='centered-header'></h2>", unsafe_allow_html=True)
+        # Divide col2 into two sub-columns (60-40 ratio)
+        col2_1, col2_2 = col2.columns([3, 2])
 
-        # Predict ball possession if button is clicked
-        if st.session_state.state['show_ball_possession']:
-            match_features_scaled = prepare_match_features(
-                merged2, team1_name, team2_name, selected_team1_players, selected_team2_players, rolling_features, scaler
-            )
-            possession_prediction = modelpossession.predict(match_features_scaled)
-            possession_probability = possession_prediction.flatten()[0]
-            if possession_probability > 0.5:
-                possession_result = f"{team1_name} will have the highest ball possession."
-            else:
-                possession_result = f"{team2_name} will have the highest ball possession."
-            st.subheader("Predicted Ball Possession:")
-            st.write(possession_result)
+        with col2_1:
 
+            # Show style of play radar chart if button is clicked
+            if st.session_state.state['show_style_of_play']:
+                team1_mean_scores = calculate_mean_scores(merged2, team1_name, selected_team1_players, ['possession_score_rolling_avg', 'defensive_score_rolling_avg', 'attacking_score_rolling_avg'])
+                team2_mean_scores = calculate_mean_scores(merged2, team2_name, selected_team2_players, ['possession_score_rolling_avg', 'defensive_score_rolling_avg', 'attacking_score_rolling_avg'])
+                
+                all_teams = merged2['Squad'].unique()
+                all_teams_mean_scores = {team: calculate_mean_scores(merged2, team, squad_player_map[team][:15], ['possession_score_rolling_avg', 'defensive_score_rolling_avg', 'attacking_score_rolling_avg']) for team in all_teams if team != team1_name and team != team2_name}
+                
+                team1_percentiles = calculate_percentile_ranks(all_teams_mean_scores, team1_name, team1_mean_scores)
+                team2_percentiles = calculate_percentile_ranks(all_teams_mean_scores, team2_name, team2_mean_scores)
+                
+                plot_radar_chart(team1_name, team1_percentiles, team2_name, team2_percentiles)
+        
+        # with col2_2:
+
+        #     # Predict match outcome if button is clicked
+        #     if st.session_state.state['show_match_outcome']:
+        #         match_features_scaled = prepare_match_features(
+        #             merged2, team1_name, team2_name, selected_team1_players, selected_team2_players, rolling_features, scaler
+        #         )
+        #         prediction = modelmatch.predict(match_features_scaled)
+        #         predicted_class = np.argmax(prediction, axis=-1)
+        #         predicted_outcome = outcome_mapping[predicted_class[0]]
+        #         st.subheader("Predicted Match Outcome:")
+        #         st.write(predicted_outcome)
+
+        #     # Predict ball possession if button is clicked
+        #     if st.session_state.state['show_ball_possession']:
+        #         match_features_scaled = prepare_match_features(
+        #             merged2, team1_name, team2_name, selected_team1_players, selected_team2_players, rolling_features, scaler
+        #         )
+        #         possession_prediction = modelpossession.predict(match_features_scaled)
+        #         possession_probability = possession_prediction.flatten()[0]
+        #         if possession_probability > 0.5:
+        #             possession_result = f"{team1_name} will have the highest ball possession."
+        #         else:
+        #             possession_result = f"{team2_name} will have the highest ball possession."
+        #         st.subheader("Predicted Ball Possession:")
+        #         st.write(possession_result)
+
+        with col2_2:
+            # Predict match outcome if button is clicked
+            if st.session_state.state['show_match_outcome']:
+                match_features_scaled = prepare_match_features(
+                    merged2, team1_name, team2_name, selected_team1_players, selected_team2_players, rolling_features, scaler
+                )
+                prediction = modelmatch.predict(match_features_scaled)
+                predicted_class = np.argmax(prediction, axis=-1)
+                predicted_outcome = outcome_mapping[predicted_class[0]]
+                
+                # Box styling for Predicted Match Outcome
+                st.markdown("""
+                <div style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f0f0f0;">
+                    <h4 style="margin-bottom: 10px; color: green;">Predicted Match Outcome:</h4>
+                    <p style="color:green;">{}</p>
+                </div>
+                """.format(predicted_outcome), unsafe_allow_html=True)
+
+            # Predict ball possession if button is clicked
+            if st.session_state.state['show_ball_possession']:
+                match_features_scaled = prepare_match_features(
+                    merged2, team1_name, team2_name, selected_team1_players, selected_team2_players, rolling_features, scaler
+                )
+                possession_prediction = modelpossession.predict(match_features_scaled)
+                possession_probability = possession_prediction.flatten()[0]
+                if possession_probability > 0.5:
+                    possession_result = f"{team1_name.capitalize()} will have the highest ball possession."
+                else:
+                    possession_result = f"{team2_name.capitalize()} will have the highest ball possession."
+                
+                # Box styling for Predicted Ball Possession
+                st.markdown("""
+                <div style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f0f0f0;">
+                    <h4 style="margin-bottom: 10px; color: green;">Predicted Ball Possession:</h4>
+                    <p style="color:green;">{}</p>
+                </div>
+                """.format(possession_result), unsafe_allow_html=True)
+
+
+                        
 if __name__ == "__main__":
     main()
+
