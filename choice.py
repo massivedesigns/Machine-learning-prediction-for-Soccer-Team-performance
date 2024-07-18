@@ -279,6 +279,9 @@ def main():
             text-align: center;
             font-size: 1.5rem; /* Adjust the font size as needed */
         }
+        footer {visibility: hidden;}
+        .css-18e3th9 {padding-top: 0rem;}
+        .css-1d391kg {padding-top: 0rem;}
         </style>
         """, unsafe_allow_html=True
     )
